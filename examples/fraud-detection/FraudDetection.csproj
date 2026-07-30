@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Put Dudiver.RuleFlow.Sdk.dll next to this file. You get it from the plugin template
+         (in RuleFlow: Plugins → Template), or from a running install at /app/plugins/. -->
+    <Reference Include="Dudiver.RuleFlow.Sdk">
+      <HintPath>Dudiver.RuleFlow.Sdk.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
