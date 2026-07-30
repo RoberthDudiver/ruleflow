@@ -1,0 +1,20 @@
+# RuleFlow + SQLite (no separate DB container). Simplest option. Change the admin (admin/admin) after login.
+#   docker compose -f sqlite.yml up -d   →   http://localhost:8080
+name: ruleflow-sqlite
+services:
+  ruleflow:
+    image: ghcr.io/roberthdudiver/ruleflow:latest
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      Setup__Skip: "true"
+      Persistence__Provider: Sqlite
+      Persistence__ConnectionString: "Data Source=App_Data/ruleflow.db"
+    ports:
+      - "8080:8080"
+    volumes:
+      - sqlite-data:/app/App_Data
+      - plugin-store:/app/pluginstore
+    restart: unless-stopped
+volumes:
+  sqlite-data:
+  plugin-store:

@@ -1,0 +1,32 @@
+# RuleFlow + PostgreSQL. Wizard skipped (configured by env). Change the admin (admin/admin) after first login.
+#   docker compose -f postgres.yml up -d   →   http://localhost:8080
+name: ruleflow-postgres
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ruleflow
+      POSTGRES_USER: ruleflow
+      POSTGRES_PASSWORD: ruleflow123
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ruleflow -d ruleflow"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+  ruleflow:
+    image: ghcr.io/roberthdudiver/ruleflow:latest
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      Setup__Skip: "true"
+      Persistence__Provider: PostgreSql
+      Persistence__ConnectionString: "Host=db;Port=5432;Database=ruleflow;Username=ruleflow;Password=ruleflow123"
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+volumes:
+  pg-data:

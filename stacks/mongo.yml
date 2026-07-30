@@ -1,0 +1,29 @@
+# RuleFlow + MongoDB. Wizard skipped (configured by env). Change the admin (admin/admin) after first login.
+#   docker compose -f mongo.yml up -d   →   http://localhost:8080
+name: ruleflow-mongo
+services:
+  db:
+    image: mongo:7
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+  ruleflow:
+    image: ghcr.io/roberthdudiver/ruleflow:latest
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      Setup__Skip: "true"
+      Persistence__Provider: Mongo
+      Persistence__ConnectionString: "mongodb://db:27017"
+      Persistence__Database: ruleflow
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+volumes:
+  mongo-data:

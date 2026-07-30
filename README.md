@@ -44,6 +44,15 @@ Install as a Windows Service instead (run PowerShell as Administrator):
 
 The app listens on **`http://0.0.0.0:8080`** by default (override with `ASPNETCORE_URLS`).
 
+### With a bundled database (Compose)
+
+Ready-made stacks that run RuleFlow **plus** a database (PostgreSQL, SQL Server, MongoDB, or just SQLite) are
+in **[stacks/](stacks/)**:
+
+```bash
+docker compose -f stacks/postgres.yml up -d      # or sqlite / sqlserver / mongo
+```
+
 ### Behind a domain with HTTPS (nginx or IIS)
 
 For a public domain with TLS, put a reverse proxy in front. Full step-by-step for **nginx (Linux)**,

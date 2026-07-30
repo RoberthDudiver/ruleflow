@@ -1,0 +1,33 @@
+# RuleFlow + SQL Server. Wizard skipped (configured by env). Change the admin (admin/admin) after first login.
+#   docker compose -f sqlserver.yml up -d   →   http://localhost:8080
+name: ruleflow-sqlserver
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Ruleflow!Passw0rd"
+      MSSQL_PID: "Express"
+    volumes:
+      - mssql-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'Ruleflow!Passw0rd' -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+  ruleflow:
+    image: ghcr.io/roberthdudiver/ruleflow:latest
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      Setup__Skip: "true"
+      Persistence__Provider: SqlServer
+      Persistence__ConnectionString: "Server=db;Database=ruleflow;User Id=sa;Password=Ruleflow!Passw0rd;TrustServerCertificate=true"
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+volumes:
+  mssql-data:
