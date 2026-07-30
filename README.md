@@ -42,13 +42,13 @@ irm https://raw.githubusercontent.com/RoberthDudiver/ruleflow/main/install.ps1 |
 Install as a Windows Service instead (run PowerShell as Administrator):
 `$env:RULEFLOW_SERVICE=1; irm …/install.ps1 | iex`.
 
-### Windows with IIS
+The app listens on **`http://0.0.0.0:8080`** by default (override with `ASPNETCORE_URLS`).
 
-Publish sits behind IIS via the **ASP.NET Core Hosting Bundle**:
-1. Install the [.NET Hosting Bundle](https://dotnet.microsoft.com/download/dotnet/10.0).
-2. Unzip the `win-x64` release into your site folder (e.g. `C:\inetpub\ruleflow`).
-3. Create an IIS site pointing at that folder; the bundled `web.config` runs it via the ASP.NET Core Module.
-4. Browse the site to run the wizard.
+### Behind a domain with HTTPS (nginx or IIS)
+
+For a public domain with TLS, put a reverse proxy in front. Full step-by-step for **nginx (Linux)**,
+**nginx (Windows)** and **IIS (Windows)** — including free auto-renewing certificates — is in
+**[docs/DEPLOY.md](docs/DEPLOY.md)**.
 
 ---
 
