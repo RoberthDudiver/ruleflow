@@ -4,6 +4,12 @@ Real, step-by-step guides: build the process **inside RuleFlow** (the visual des
 API**. They're grouped to show the two sides of RuleFlow — how much you get with **zero code**, and how you plug
 in a **DLL** when you need custom computation.
 
+## ⭐ Best of both — one flow, DLL **and** no-DLL
+
+| Example | What it shows |
+|---|---|
+| [Loan application](loan-application-mixed/) | A **single** lifecycle that uses a **plugin (DLL)** for the credit score, **plain rules** for the clear cases, an **AI step** for the borderline band, and a **human signal** for the final call. The whole engine in one process. |
+
 ## Without a DLL — pure configuration
 
 No plugin, no code. Rules, waiting states, signals, and (optionally) a built-in AI step do all the work.
