@@ -52,6 +52,10 @@ For a public domain with TLS, put a reverse proxy in front. Full step-by-step fo
 
 ---
 
+## Examples & guides
+
+Step-by-step, real-world setups (configure it in RuleFlow + consume it over the API): see **[examples/](examples/)** — [logistics / package distribution](examples/logistics-package-distribution/) and [payments / fraud detection](examples/fraud-detection/).
+
 ## First run
 
 The wizard asks for the **database** (SQLite / PostgreSQL / SQL Server / MongoDB, with a connection test),
