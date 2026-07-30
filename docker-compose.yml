@@ -1,0 +1,20 @@
+# RuleFlow via Docker (evaluation build).
+#   docker compose up -d      →  open http://localhost:8080  →  complete the wizard
+services:
+  ruleflow:
+    image: ghcr.io/roberthdudiver/ruleflow:latest
+    container_name: ruleflow
+    restart: unless-stopped        # REQUIRED: the first-run wizard restarts the app to apply the config
+    ports:
+      - "8080:8080"
+    volumes:
+      - ruleflow-data:/app/App_Data      # setup file + SQLite database
+      - ruleflow-plugins:/app/pluginstore # uploaded plugin versions
+    # To skip the wizard and configure by environment instead, uncomment:
+    # environment:
+    #   Setup__Skip: "true"
+    #   Persistence__Provider: "PostgreSql"
+    #   Persistence__ConnectionString: "Host=db;Database=ruleflow;Username=postgres;Password=..."
+volumes:
+  ruleflow-data:
+  ruleflow-plugins:

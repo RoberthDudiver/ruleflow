@@ -1,0 +1,40 @@
+RuleFlow — Evaluation License Agreement
+Copyright (c) 2026 Dudiver (Roberth Dudiver). All rights reserved.
+
+This is a proprietary software product. Its source code is NOT provided. This
+license governs the use of the compiled binaries and container images ("the
+Software").
+
+1. EVALUATION GRANT
+   You are granted a free, non-exclusive, non-transferable, revocable license to
+   install and use the Software solely for evaluation, testing and development
+   ("Evaluation Use"). Evaluation Use is non-production and non-commercial.
+
+2. PRODUCTION / COMMERCIAL USE
+   Any use of the Software in production, or for any commercial purpose, requires
+   a separate paid commercial license and acceptance of the applicable commercial
+   terms of service. Contact rdudiver@gmail.com to obtain one.
+
+3. RESTRICTIONS
+   You may not: (a) redistribute, sublicense, sell or rent the Software; (b)
+   reverse engineer, decompile or disassemble it, except to the extent this
+   restriction is prohibited by applicable law; (c) remove or alter any notices;
+   (d) use it to build a competing product.
+   Plugins that YOU write against the public SDK, and the data you process, are
+   yours — this license covers only the RuleFlow Software itself.
+
+4. NO WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+
+5. LIMITATION OF LIABILITY
+   IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+   CONNECTION WITH THE SOFTWARE OR ITS USE.
+
+6. TERMINATION
+   This license terminates automatically if you breach it. On termination you
+   must stop using and delete all copies of the Software.
+
+For commercial licensing and terms of service: rdudiver@gmail.com
